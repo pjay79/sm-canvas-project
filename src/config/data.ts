@@ -21,7 +21,7 @@ export const findings = [
     id: uuidv4(),
     type: "absolute",
     x: 200,
-    y: "100",
+    y: 100,
     label: "Finding 3",
   },
   {

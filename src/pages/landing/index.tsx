@@ -25,7 +25,7 @@ const Landing: React.FC = () => {
     <SCLanding>
       <Header />
       <Canvas findings={data} />
-      <Table />
+      <Table findings={data} />
     </SCLanding>
   );
 };

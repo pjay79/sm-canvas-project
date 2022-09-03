@@ -14,16 +14,18 @@ const SCTable = styled.table`
   }
 `;
 
-const Table: React.FC = () => {
+const Table: React.FC<{ findings: Array<any> }> = ({ findings }) => {
   return (
     <SCTableWrapper>
       <h2>Findings</h2>
       <SCTable>
         <tbody>
-          <tr>
-            <td>Hello World</td>
-            <td>Lorem ipsum dolar sit amet</td>
-          </tr>
+          {findings.map((finding: any) => (
+            <tr>
+              <td>{finding.type}</td>
+              <td>{finding.label}</td>
+            </tr>
+          ))}
         </tbody>
       </SCTable>
     </SCTableWrapper>

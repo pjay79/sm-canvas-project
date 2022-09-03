@@ -3,11 +3,14 @@ import React, { useState, useEffect } from "react";
 import { fabric } from "fabric";
 import styled from "styled-components";
 
+const SCCanvasWrapper = styled.div`
+`;
+
 const SCCanvas = styled.div`
   background-color: #eeeeee;
   border: 1px solid #ddd;
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
 `;
 
 const Canvas: React.FC<{ findings: Array<any> }> = ({ findings }) => {
@@ -67,10 +70,12 @@ const Canvas: React.FC<{ findings: Array<any> }> = ({ findings }) => {
   }, [findings, techTaskCanvas]);
 
   return (
-    <SCCanvas>
+    <SCCanvasWrapper>
       <h2>Canvas</h2>
-      <canvas width="800" height="800" ref={canvasRef} />
-    </SCCanvas>
+      <SCCanvas>
+        <canvas width="800" height="800" ref={canvasRef} />
+      </SCCanvas>
+    </SCCanvasWrapper>
   );
 };
 
