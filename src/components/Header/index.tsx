@@ -4,7 +4,6 @@ import styled from "styled-components";
 const SCHeader = styled.header`
 `;
 
-
 const Header: React.FC = () => {
   return (
     <SCHeader>

@@ -1,16 +1,28 @@
 import React from "react";
 import styled from "styled-components";
+import TableRow from "./TableRow";
 
 const SCTableWrapper = styled.div`
+  margin-left: 20px;
+  color: #FFFFFF;
 `;
 
 const SCTable = styled.table`
-  width: 100%;
+  width: 200px;
+  height: 800px;
   border-collapse: collapse;    
 
   td {
     border: 1px solid #ddd;
     padding: 4px;
+  }
+
+  .selected {
+    background-color: green;
+  }
+
+  .unselected {
+    background-color: white;
   }
 `;
 
@@ -21,10 +33,7 @@ const Table: React.FC<{ findings: Array<any> }> = ({ findings }) => {
       <SCTable>
         <tbody>
           {findings.map((finding: any) => (
-            <tr>
-              <td>{finding.type}</td>
-              <td>{finding.label}</td>
-            </tr>
+            <TableRow key={finding.id} finding={finding} />
           ))}
         </tbody>
       </SCTable>
