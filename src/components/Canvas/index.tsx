@@ -17,19 +17,17 @@ const Canvas: React.FC = () => {
   const { canvas, setSelected, canvasRef } = useFabric();
 
   useEffect(() => {
-    if (canvas) {
-      canvas?.on("mouse:over", (options: any) => {
-        setSelected(options.target?.data?.id);
-        options.target?.item(0)?.set("fill", "#2FAD66");
-        canvas.renderAll();
-      });
-  
-      canvas?.on("mouse:out", (options: any) => {
-        setSelected("");
-        options.target?.item(0)?.set("fill", "#FFDD00");
-        canvas.renderAll();
-      });
-    }
+    canvas?.on("mouse:over", (options: any) => {
+      setSelected(options.target?.data?.id);
+      options.target?.item(0)?.set("fill", "#2FAD66");
+      canvas.renderAll();
+    });
+
+    canvas?.on("mouse:out", (options: any) => {
+      setSelected("");
+      options.target?.item(0)?.set("fill", "#FFDD00");
+      canvas.renderAll();
+    });
   }, [canvas, setSelected]);
 
   return (
