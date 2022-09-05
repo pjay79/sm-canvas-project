@@ -32,7 +32,7 @@ const Table: React.FC = () => {
   
   return (
     <SCTableWrapper>
-      <h2>Findings</h2>
+      <h4>Findings</h4>
       <SCTable>
         <tbody>
           {findings.map((finding: any) => (

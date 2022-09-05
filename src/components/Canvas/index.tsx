@@ -7,7 +7,7 @@ const SCCanvasWrapper = styled.div`
 
 const SCCanvas = styled.div`
   background-color: #000000;
-  border: 2px solid #EA4E1B;
+  border: 1px solid #EA4E1B;
   border-radius: 8px;
   width: 800px;
   height: 800px;
@@ -32,7 +32,7 @@ const Canvas: React.FC = () => {
 
   return (
     <SCCanvasWrapper>
-      <h2>Canvas</h2>
+      <h4>Canvas</h4>
       <SCCanvas>
         <canvas width="800" height="800" ref={canvasRef} />
       </SCCanvas>

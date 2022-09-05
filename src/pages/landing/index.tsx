@@ -7,7 +7,7 @@ import SCLanding from "./css";
 const Landing: React.FC = () => {
   return (
     <SCLanding>
-      <Header />
+      <Header title="See-Mode Front-End Tech Task" />
       <div className="container">
         <Canvas />
         <Table />

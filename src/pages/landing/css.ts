@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SCLanding = styled.div`
   padding: 20px;
-  text-align: center;
+  text-align: left;
   color: #FFFFFF;
   font-family: "Arial";
   .container {
