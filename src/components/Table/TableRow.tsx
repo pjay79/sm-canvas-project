@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useFindings } from "../../providers/Findings";
+import { useFabric } from "../../providers/Fabric";
 
 const SCTableRow = styled.tr`
   text-align: center;
@@ -8,7 +8,7 @@ const SCTableRow = styled.tr`
 `;
 
 const TableRow: React.FC<{ finding: any }> = ({ finding }) => {
-  const { selected, setSelected } = useFindings();
+  const { selected, setSelected } = useFabric();
 
   const handleMouseEnter = () => {
     setSelected(finding.id);

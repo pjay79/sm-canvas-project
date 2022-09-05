@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TableRow from "./TableRow";
+import { useFabric } from "../../providers/Fabric";
 
 const SCTableWrapper = styled.div`
   margin-left: 20px;
@@ -18,7 +19,7 @@ const SCTable = styled.table`
   }
 
   .selected {
-    background-color: green;
+    background-color: #2FAD66;
   }
 
   .unselected {
@@ -26,7 +27,9 @@ const SCTable = styled.table`
   }
 `;
 
-const Table: React.FC<{ findings: Array<any> }> = ({ findings }) => {
+const Table: React.FC = () => {
+  const { findings } = useFabric();
+  
   return (
     <SCTableWrapper>
       <h2>Findings</h2>
