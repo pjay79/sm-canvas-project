@@ -1,29 +1,23 @@
-import React, { 
-  createContext,
-  useContext, 
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { fabric } from "fabric";
 import { getFindings } from "../../services/SeeModeAPI";
-import { DATA_TYPES } from '../../constants/enums';
-// import { clockAngle } from '../../utils/clockAngle';
+import { DATA_TYPES } from "../../constants/enums";
+import { getAngle, getCoords } from "../../utils";
 
 export const FabricContext = createContext<any>([]);
 
 export const useFabric = () => useContext(FabricContext);
 
-export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
+export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const [ canvas, setCanvas ] = useState<fabric.Canvas | null>(null);
-  const [ findings, setFindings ] = useState<Array<any>>([]);
-  const [ selected, setSelected ] = useState<string>("");
+  const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
+  const [findings, setFindings] = useState<Array<any>>([]);
+  const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getFindings().catch(e => console.log(e));
+      const result = await getFindings().catch((e) => console.log(e));
       setFindings(result);
     };
 
@@ -33,7 +27,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ childre
   useEffect(() => {
     const options = {};
     const canvas = new fabric.Canvas(canvasRef.current, options);
-    canvas.toJSON(['data']);
+    canvas.toJSON(["data"]);
     setCanvas(canvas);
 
     return () => {
@@ -43,14 +37,14 @@ export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ childre
   }, []);
 
   useEffect(() => {
-    const addFinding = ({ x, y, label, id, type, hours, minutes, distanceFromCentre }: any) => {
+    const addFinding = ({ x, y, label, id, type, hours, minutes, distanceFromCenter }: any) => {
       if (!canvas) {
         return;
       }
 
       const circle = new fabric.Circle({
         radius: 10,
-        fill: selected === id ? "#2FAD66" :"#FFDD00",
+        fill: selected === id ? "#2FAD66" : "#FFDD00",
         left: 0,
         top: 0,
         selectable: true,
@@ -82,16 +76,19 @@ export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ childre
       }
 
       if (type === DATA_TYPES.RADIAL) {
+        const angle = getAngle(hours, minutes);
+        const [x, y] = getCoords(distanceFromCenter, angle);
+
         group = new fabric.Group([circle, text], {
-          left: 400,
-          top: 400,
+          left: 400 + x,
+          top: 400 + y,
           selectable: true,
           hasBorders: false,
           hasControls: false,
         });
-      } 
+      }
 
-      group.set('data', {
+      group.set("data", {
         id: id,
       });
 
@@ -103,15 +100,15 @@ export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ childre
 
   return (
     <FabricContext.Provider
-      value={{ 
+      value={{
         findings,
         selected,
         setSelected,
         canvas,
         setCanvas,
         canvasRef,
-      }
-    }>
+      }}
+    >
       {children}
     </FabricContext.Provider>
   );
