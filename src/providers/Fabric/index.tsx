@@ -2,14 +2,6 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { fabric } from "fabric";
 import { getFindings } from "../../services/SeeModeAPI";
 
-// Here are the things that can live in the fabric context.
-type FabContext = [
-  // The canvas
-  fabric.Canvas | null,
-  // The setter for the canvas
-  (c: fabric.Canvas) => void
-];
-
 export const FabricContext = createContext<any>([]);
 
 export const useFabric = () => useContext(FabricContext);

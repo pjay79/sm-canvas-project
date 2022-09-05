@@ -1,5 +1,4 @@
 import { findings } from "../config/data";
-// import { Findings } from "../types/findings";
 
 const SeeModeAPI = (): Promise<any> =>
   new Promise((resolve, reject) => {
