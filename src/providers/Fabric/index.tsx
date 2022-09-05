@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import React, {createContext, useContext, useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import { getFindings } from "../../services/SeeModeAPI";
 
@@ -69,9 +69,11 @@ export const FabricProvider: React.FC<{ children: React.ReactNode}> = ({ childre
         hasControls: false,
       });
 
+
       group.set('data', {
         id: id,
       });
+
 
       canvas.add(group);
     };

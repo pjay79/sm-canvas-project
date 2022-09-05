@@ -8,10 +8,13 @@ const SCTableRow = styled.tr`
 `;
 
 const TableRow: React.FC<{ finding: any }> = ({ finding }) => {
-  const { selected, setSelected } = useFabric();
+  const { selected, setSelected, canvas } = useFabric();
+  console.log(canvas._objects[0])
 
   const handleMouseEnter = () => {
+    console.log('here')
     setSelected(finding.id);
+    canvas._objects[0].item(0)?.set("fill", "#2FAD66");
   };
 
   const handleMouseLeave = () => {
