@@ -1,5 +1,6 @@
 import React, { 
-  createContext, useContext, useState, useEffect, useRef } from 'react';
+  createContext,
+  useContext, useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import { getFindings } from "../../services/SeeModeAPI";
 
