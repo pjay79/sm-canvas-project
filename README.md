@@ -17,10 +17,9 @@
   - enhance types and remove uses of "any"
   - add tests using react-testing-library
   - consider using themes via styled-components
-  - need to add error boundary
   - integrate with a service like Sentry to check for any client side / api errors or crashes
   - add in data validation and handle situations where data received has missing properties
-  - add loading and error handling to components and pages to show loading spinner or error message in the ui where needed
+  - add loading and error handling to components and pages to show loading spinner or error message in the ui where needed, and global react error boundary
 
 ## About the solution
 
