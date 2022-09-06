@@ -4,7 +4,7 @@
 
 - Does my submission reflect my work?
 
-  - yes, but further refinements around the use of Canvas and Fabric are possible as this is something I have not used extensively before, eg how to best update the objects on a canvas and how and when to clear and reload the canvas
+  - yes, but further refinements around the use of Canvas and Fabric are possible as this is something I have not used extensively before, eg how to best update the objects on a canvas and how and when to clear and reload the canvas effciently
 
 - Is my solution scalable?
 
@@ -13,6 +13,7 @@
   - would need to build and deploy to a CDN eg AWS Cloudfront/S3 and then assess what the amount of users are and what the frequency of data access is, as well as the volume of data that is being retrieved at any one time and what services we are calling downstream and how scalable they are (eg are there any api use restrictions / request limits etc)
 
 - How can I improve my submission?
+  - better use of Fabric library to render and update objects on Canvas in most efficient way
   - in a real-world situation we would look at optimising for performance when dealing with a large amount of findings by using useCallback to memoize a function, or useMemo to memoize a result or restrict unnecessary rendering of a component
   - enhance types and remove uses of "any"
   - add tests using react-testing-library
