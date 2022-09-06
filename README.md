@@ -27,6 +27,8 @@
 
 In this solution I decided to use Context to share data across the Canvas and Table components, there may be better approaches and reasons to use Redux where the state logic is more complicated. I had added unique id's to each finding in the data but in a real-world situation we would hopefully have an id already for each finding.
 
+![alt text](https://user-images.githubusercontent.com/14052885/188534721-ca4e6d25-7bb4-41e8-8082-3470decf1384.png)
+
 ## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
