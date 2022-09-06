@@ -62,6 +62,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         return;
       }
 
+      /* ToDo: refactor, consider moving objects, text, labels, groups to separate files/folders if they are re-used elsewhere */
       const circle = new fabric.Circle({
         radius: 10,
         fill: selected === id ? colors.green : colors.yellow,
@@ -100,6 +101,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         const [x, y] = getCoords(distanceFromCenter, angle);
 
         group = new fabric.Group([circle, text], {
+          /* ToDo: refactor, try setting the origin to center of canvas */
           left: 400 + x,
           top: 400 + y,
           selectable: true,
@@ -116,8 +118,8 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
 
     /* 
-    ToDO: refactor, currently when highlighting a finding on the table a new object is added to the canvas on top of an 
-    existing object, temp fix to clear the canvas before generating a new one. */
+    ToDo: refactor, currently when highlighting a finding on the table a new object is added to the canvas on top of an 
+    existing object, temp fix to clear the canvas */
     canvas?.clear();
 
     findings?.forEach(addFinding);
