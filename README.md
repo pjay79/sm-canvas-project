@@ -20,6 +20,7 @@
   - integrate with a service like Sentry to check for any client side / api errors or crashes
   - add in data validation and handle situations where data received has missing properties
   - add loading and error handling to components and pages to show loading spinner or error message in the ui where needed, and global react error boundary
+  - enhance overall ui styling, browser compatibility, and handle responsiveness
 
 ## About the solution
 

@@ -19,7 +19,7 @@ const SCTableWrapper = styled.div`
 const SCTable = styled.table<Props>`
   width: 200px;
   height: 800px;
-  border-collapse: collapse;
+  border-collapse: collapse;}
 
   td {
     border: 1px solid ${({ colors }) => colors.grey};
