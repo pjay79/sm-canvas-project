@@ -115,6 +115,11 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       canvas.add(group);
     };
 
+    /* 
+    ToDO: refactor, currently when highlighting a finding on the table a new object is added to the canvas on top of an 
+    existing object, temp fix to clear the canvas before generating a new one. */
+    canvas?.clear();
+
     findings?.forEach(addFinding);
   }, [findings, canvas, selected]);
 
