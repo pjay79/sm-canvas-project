@@ -16,7 +16,7 @@ const getFindings = async (): Promise<Array<FindingsData> | null> => {
     const result = await SeeModeAPI();
     return result;
   } catch (error) {
-    console.error("Error fetching findings:", error);
+    console.log("Error fetching findings:", error);
     return null;
   }
 };

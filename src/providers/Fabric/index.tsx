@@ -35,8 +35,13 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getFindings();
-      setFindings(result);
+      try {
+        const result = await getFindings();
+        setFindings(result);
+      } catch (e) {
+        console.log(e);
+        setFindings([]);
+      }
     };
 
     fetchData();
