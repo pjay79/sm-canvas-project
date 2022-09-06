@@ -4,7 +4,7 @@
 
 - Does my submission reflect my work?
 
-  - yes, but further refinements around the use of Canvas and Fabric are possible as this is something I have not used extensively before, eg how to best update the objects on a canvas and how and when to clear and reload the canvas effciently
+  - yes, but further refinements around the use of Canvas and Fabric are possible as this is something I have not used extensively before, eg how to best update the objects on a canvas and how and when to clear and reload the canvas efficiently
 
 - Is my solution scalable?
 
