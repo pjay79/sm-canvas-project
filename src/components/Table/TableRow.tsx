@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { useFabric } from "../../providers/Fabric";
+import { colors } from "../../common/constants";
+import { FindingsData } from "../../types/findings";
 
-const SCTableRow = styled.tr`
+/* ToDo */
+type Props = {
+  colors: any;
+};
+
+const SCTableRow = styled.tr<Props>`
   text-align: center;
-  color: #000000;
+  color: ${({ colors }) => colors.black};
 `;
 
-const TableRow: React.FC<{ finding: any }> = ({ finding }) => {
+const TableRow: React.FC<{ finding: FindingsData }> = ({ finding }) => {
   const { selected, setSelected } = useFabric();
 
   const handleMouseOver = () => {
@@ -20,14 +27,15 @@ const TableRow: React.FC<{ finding: any }> = ({ finding }) => {
 
   return (
     <SCTableRow
+      colors={colors}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
-      className={finding.id === selected ? "selected" :  "unselected"}
+      className={finding.id === selected ? "selected" : "unselected"}
     >
       <td>{finding.type}</td>
       <td>{finding.label}</td>
     </SCTableRow>
-  )
-}
+  );
+};
 
 export default TableRow;

@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export const findings = [
   {
@@ -17,7 +17,7 @@ export const findings = [
     label: "Finding 2",
     note: "Duis aute irure dolor in reprehenderit",
   },
-  { 
+  {
     id: uuidv4(),
     type: "absolute",
     x: 200,
@@ -57,11 +57,11 @@ export const findings = [
     label: "Finding 5",
     note: "Culpa qui officia deserunt mollit anim id est laborum",
   },
-  { 
+  {
     id: uuidv4(),
     type: "absolute",
-    x: 300, 
-    y: 400, 
+    x: 300,
+    y: 400,
     label: "Finding 6",
-  }
+  },
 ];

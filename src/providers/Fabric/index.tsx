@@ -1,10 +1,28 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { fabric } from "fabric";
 import { getFindings } from "../../services/SeeModeAPI";
-import { DATA_TYPES } from "../../constants/enums";
-import { getAngle, getCoords } from "../../utils";
+import { DATA_TYPES } from "../../common/constants";
+import { getAngle, getCoords } from "../../common/utils";
+import { FindingsData } from "../../types/findings";
+import { colors } from "../../common/constants";
 
-export const FabricContext = createContext<any>([]);
+export interface FabricContextProps {
+  findings: Array<FindingsData> | null;
+  selected: string;
+  setSelected: (selected: string) => void;
+  canvas: fabric.Canvas | null;
+  setCanvas: (canvas: fabric.Canvas) => void;
+  canvasRef: any;
+}
+
+export const FabricContext = createContext<FabricContextProps>({
+  findings: null,
+  selected: "",
+  setSelected: () => {},
+  canvas: null,
+  setCanvas: () => {},
+  canvasRef: null,
+});
 
 export const useFabric = () => useContext(FabricContext);
 
@@ -12,12 +30,12 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
-  const [findings, setFindings] = useState<Array<any>>([]);
+  const [findings, setFindings] = useState<Array<FindingsData> | null>([]);
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getFindings().catch((e) => console.log(e));
+      const result = await getFindings();
       setFindings(result);
     };
 
@@ -27,7 +45,9 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   useEffect(() => {
     const options = {};
     const canvas = new fabric.Canvas(canvasRef.current, options);
+
     canvas.toJSON(["data"]);
+
     setCanvas(canvas);
 
     return () => {
@@ -44,7 +64,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
       const circle = new fabric.Circle({
         radius: 10,
-        fill: selected === id ? "#2FAD66" : "#FFDD00",
+        fill: selected === id ? colors.green : colors.yellow,
         left: 0,
         top: 0,
         selectable: true,
@@ -55,7 +75,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const text = new fabric.Text(label, {
         fontFamily: "Arial",
         fontSize: 12,
-        fill: "#FFFFFF",
+        fill: colors.white,
         left: 24,
         top: 4,
         selectable: true,
@@ -95,7 +115,7 @@ export const FabricProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       canvas.add(group);
     };
 
-    findings.forEach(addFinding);
+    findings?.forEach(addFinding);
   }, [findings, canvas, selected]);
 
   return (

@@ -1,4 +1,4 @@
-/* Calculate the angle between the hours and minutes hands of a clock */
+/* Calculate the angle between the hour and minute hands of a clock */
 export const getAngle = (hours: number, minutes: number): number => {
   const ANGLE_PER_HOUR = 360 / 12,
     ANGLE_PER_MINUTE = 360 / 60,
